@@ -45,7 +45,7 @@ O sistema foi planejado para incluir os seguintes módulos e funcionalidades:
   * **Servidor de Aplicação:**
       * Apache Tomcat
   * **Banco de Dados:**
-      * [MySQL]
+      * MySQL
 
 ### Requisito Chave do Projeto
 
@@ -68,7 +68,7 @@ Antes de começar, você vai precisar ter instalado em sua máquina as seguintes
 
 ```bash
 # Clone este repositório
-$ git clone [URL-DO-SEU-REPOSITORIO]
+$ git clone https://github.com/JuliaTBarros/Pet-Shop-BD
 
 # Importe o projeto na sua IDE
 
@@ -83,7 +83,7 @@ $ git clone [URL-DO-SEU-REPOSITORIO]
 
 | Nome do Integrante |
 | :---: |
-| [Henrique Figueirêdo Tefile] |
-| [Julia Torres de Barros] |
-| [Maria Clara Neves] |
-| [Vinícius Bernardo da Silva] |
+| Henrique Figueirêdo Tefile |
+| Julia Torres de Barros |
+| Maria Clara Neves |
+| Vinícius Bernardo da Silva |
