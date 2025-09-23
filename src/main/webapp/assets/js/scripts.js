@@ -1,0 +1,2 @@
+// Arquivo placeholder: scripts.js
+
