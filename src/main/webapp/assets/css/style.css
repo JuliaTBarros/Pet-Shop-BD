@@ -1,4 +1,0 @@
-/* Garante que o rodapé fique na parte inferior da página */
-main > .container {
-    padding: 60px 15px 0;
-}

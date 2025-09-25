@@ -1,2 +1,0 @@
-<!-- Arquivo placeholder: index.jsp -->
-
