@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Gerenciamento</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="main-header">
+        <h1 class="project-title">Meu Projeto BD</h1>
+        <nav class="main-nav">
+            <ul>
+                <li><a href="#" id="nav-dashboard">Dashboard</a></li>
+                <li><a href="#" id="nav-tabela1">Gerenciar Clientes</a></li>
+                <li><a href="#" id="nav-tabela2">Gerenciar Produtos</a></li>
+                <li><a href="#" id="nav-consultas">Consultas SQL</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="main-content">
+        <section id="dashboard-section" class="content-section">
+            <h2>Dashboard de Estatística</h2>
+            <p>Os gráficos gerados para a disciplina de Estatística serão exibidos aqui.</p>
+            <div class="charts-container">
+                </div>
+        </section>
+
+        <section id="tabela1-section" class="content-section hidden">
+            <h2>Gerenciamento de Clientes</h2>
+            <p>Formulários e tabelas para inserir, alterar e deletar clientes.</p>
+            </section>
+
+        <section id="tabela2-section" class="content-section hidden">
+            <h2>Gerenciamento de Produtos</h2>
+            <p>Formulários e tabelas para inserir, alterar e deletar produtos.</p>
+             </section>
+
+        <section id="consultas-section" class="content-section hidden">
+            <h2>Visualização de Consultas</h2>
+            <p>Resultados das consultas pré-definidas no banco de dados.</p>
+             </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
