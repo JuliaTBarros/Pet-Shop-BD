@@ -1,0 +1,79 @@
+/* --- Estilos do Modal (Pop-up) --- */
+
+/* Fundo escurecido que cobre a tela inteira */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    display: none;
+    /* Começa escondido */
+    justify-content: center;
+    align-items: center;
+    z-index: 2000;
+}
+
+/* Classe para ativar a visibilidade do modal */
+.modal-overlay.active {
+    display: flex;
+}
+
+/* O container branco do conteúdo do modal */
+.modal-content {
+    background-color: white;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    width: 90%;
+    max-width: 600px;
+    /* Largura máxima do modal */
+    max-height: 90vh;
+    /* Altura máxima para não cortar em telas pequenas */
+    overflow-y: auto;
+    /* Adiciona scroll se o conteúdo for muito grande */
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #dee2e6;
+    padding-bottom: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.modal-header h3 {
+    margin: 0;
+    color: var(--text-color);
+}
+
+.close-button {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #aaa;
+    cursor: pointer;
+    transition: color 0.2s ease;
+}
+
+.close-button:hover {
+    color: #333;
+}
+
+/* --- Estilos para o cabeçalho da seção (título + botão) --- */
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid #dee2e6;
+}
+
+.section-header h2 {
+    margin: 0;
+    border: none;
+    /* Remove a borda do h2 original */
+    padding: 0;
+}
