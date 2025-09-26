@@ -1,7 +1,8 @@
-/* --- Estilos para Formulários (Página Clientes) --- */
+/* --- Estilos para Formulário --- */
 .form-container,
 .table-container {
     margin-bottom: 2rem;
+    overflow-x: auto;
 }
 
 #form-cliente {
@@ -85,7 +86,7 @@ button {
     background-color: #5a6268;
 }
 
-/* --- Estilos para Tabelas (Página Clientes) --- */
+/* --- Estilos para Tabelas --- */
 .data-table {
     width: 100%;
     border-collapse: collapse;
