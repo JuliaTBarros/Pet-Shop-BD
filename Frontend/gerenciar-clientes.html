@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Gerenciar Clientes - Sistema de Gerenciamento</title>
+
+		<link rel="stylesheet" href="css/main.css" />
+		<link rel="stylesheet" href="css/navigation.css" />
+		<link rel="stylesheet" href="css/clientes.css" />
+	</head>
+	<body>
+		<header class="main-header">
+			<h1 class="project-title">Meu Projeto BD</h1>
+			<nav class="main-nav">
+				<ul>
+					<li><a href="index.html">Dashboard</a></li>
+					<li>
+						<a href="gerenciar-clientes.html" class="active"
+							>Gerenciar Clientes</a
+						>
+					</li>
+					<li><a href="gerenciar-produtos.html">Gerenciar Produtos</a></li>
+					<li><a href="#" id="nav-consultas">Consultas SQL</a></li>
+				</ul>
+			</nav>
+		</header>
+
+		<main class="main-content">
+			<section id="tabela1-section" class="content-section">
+				<h2>Gerenciamento de Clientes</h2>
+
+				<div class="form-container">
+					<h3>Cadastrar Novo Cliente</h3>
+					<form id="form-cliente">
+						<div class="form-group">
+							<label for="cpf">CPF:</label>
+							<input
+								type="text"
+								id="cpf"
+								name="cpf"
+								maxlength="11"
+								required
+								placeholder="Apenas números"
+							/>
+						</div>
+						<div class="form-group">
+							<label for="nome">Nome Completo:</label>
+							<input type="text" id="nome" name="nome" required />
+						</div>
+						<div class="form-group">
+							<label for="telefone1">Telefone Principal:</label>
+							<input type="tel" id="telefone1" name="telefone1" required />
+						</div>
+						<div class="form-group">
+							<label for="telefone2">Telefone Secundário:</label>
+							<input type="tel" id="telefone2" name="telefone2" />
+						</div>
+
+						<fieldset class="form-fieldset">
+							<legend>Endereço</legend>
+							<div class="form-grid">
+								<div class="form-group grid-col-span-2">
+									<label for="logradouro">Logradouro:</label>
+									<input type="text" id="logradouro" name="logradouro" />
+								</div>
+								<div class="form-group">
+									<label for="numero">Número:</label>
+									<input type="text" id="numero" name="numero" />
+								</div>
+								<div class="form-group">
+									<label for="bairro">Bairro:</label>
+									<input type="text" id="bairro" name="bairro" />
+								</div>
+								<div class="form-group">
+									<label for="cidade">Cidade:</label>
+									<input type="text" id="cidade" name="cidade" />
+								</div>
+								<div class="form-group">
+									<label for="estado">Estado:</label>
+									<input
+										type="text"
+										id="estado"
+										name="estado"
+										maxlength="2"
+										placeholder="Ex: PE"
+									/>
+								</div>
+								<div class="form-group">
+									<label for="cep">CEP:</label>
+									<input
+										type="text"
+										id="cep"
+										name="cep"
+										maxlength="8"
+										placeholder="Apenas números"
+									/>
+								</div>
+							</div>
+						</fieldset>
+
+						<div class="form-actions">
+							<button type="submit" class="btn btn-primary">
+								Salvar Cliente
+							</button>
+							<button type="reset" class="btn btn-secondary">Limpar</button>
+						</div>
+					</form>
+				</div>
+
+				<div class="table-container">
+					<h3>Clientes Cadastrados</h3>
+					<table class="data-table" id="tabela-clientes">
+						<thead>
+							<tr>
+								<th>CPF</th>
+								<th>Nome</th>
+								<th>Cidade/UF</th>
+								<th>Telefone</th>
+								<th>Ações</th>
+							</tr>
+						</thead>
+						<tbody id="corpo-tabela-clientes">
+							<tr>
+								<td>11122233344</td>
+								<td>Ana Silva</td>
+								<td>São Paulo/SP</td>
+								<td>11987654321</td>
+								<td class="action-buttons">
+									<button class="btn-edit">Editar</button>
+									<button class="btn-delete">Excluir</button>
+								</td>
+							</tr>
+							<tr>
+								<td>12121212121</td>
+								<td>Laura Oliveira</td>
+								<td>Recife/PE</td>
+								<td>81988776655</td>
+								<td class="action-buttons">
+									<button class="btn-edit">Editar</button>
+									<button class="btn-delete">Excluir</button>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</section>
+		</main>
+
+		<script src="script.js"></script>
+	</body>
+</html>
