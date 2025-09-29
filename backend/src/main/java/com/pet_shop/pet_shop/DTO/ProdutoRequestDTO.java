@@ -1,39 +1,15 @@
-package com.pet_shop.pet_shop.Model;
+package com.pet_shop.pet_shop.DTO;
 
 import java.math.BigDecimal;
 
-public class Produto {
-
-    private Integer cod_produto;
+public class ProdutoRequestDTO {
     private String nome_produto;
     private String descricao;
     private BigDecimal preco_venda;
     private int quantidade_estoque;
     private String cnpjFornecedor;
 
-    // Construtores
-    public Produto() {
-    }
-
-    public Produto(Integer cod_produto, String nome_produto, String descricao, BigDecimal preco_venda,
-            int quantidade_estoque, String cnpjFornecedor) {
-        this.cod_produto = cod_produto;
-        this.nome_produto = nome_produto;
-        this.descricao = descricao;
-        this.preco_venda = preco_venda;
-        this.quantidade_estoque = quantidade_estoque;
-        this.cnpjFornecedor = cnpjFornecedor;
-    }
-
     // Getters e Setters
-    public Integer getCod_produto() {
-        return cod_produto;
-    }
-
-    public void setCod_produto(Integer cod_produto) {
-        this.cod_produto = cod_produto;
-    }
-
     public String getNome_produto() {
         return nome_produto;
     }

@@ -34,36 +34,40 @@ public class ClienteRepository {
         }
     }
 
-    //Criar um novo cliete - Bernardo
+    // Criar um novo cliete - Bernardo
     public Cliente save(Cliente cliente) {
         String sql = "INSERT INTO Cliente (cpf, nome, logradouro, numero, bairro, cidade, estado, cep, telefone1, telefone2) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-        jdbcTemplate.update(sql, cliente.getCpf(), cliente.getNome(), cliente.getLogradouro(), cliente.getNumero(), cliente.getBairro(), cliente.getCidade(), cliente.getEstado(), cliente.getCep(), cliente.getTelefone1(), cliente.getTelefone2());
+        jdbcTemplate.update(sql, cliente.getCpf(), cliente.getNome(), cliente.getLogradouro(), cliente.getNumero(),
+                cliente.getBairro(), cliente.getCidade(), cliente.getEstado(), cliente.getCep(), cliente.getTelefone1(),
+                cliente.getTelefone2());
         return cliente;
     }
 
-    //Ler (Find all) um novo cliente - Bernardo
+    // Ler (Find all) um novo cliente - Bernardo
     public List<Cliente> findAll() {
         String sql = "SELECT * FROM Cliente";
         return jdbcTemplate.query(sql, new ClienteRowMapper());
     }
 
-    //Ler (find by CPF) - Bernardo
+    // Ler (find by CPF) - Bernardo
     public Cliente findByCpf(String cpf) {
         String sql = "SELECT * FROM Cliente WHERE cpf = ?";
         try {
-            return jdbcTemplate.queryForObject(sql, new Object[]{cpf}, new ClienteRowMapper());
+            return jdbcTemplate.queryForObject(sql, new Object[] { cpf }, new ClienteRowMapper());
         } catch (Exception e) {
             return null;
         }
     }
 
-    //Atualizar - Bernardo
-    public int update (Cliente cliente) {
+    // Atualizar - Bernardo
+    public int update(Cliente cliente) {
         String sql = "UPDATE Cliente SET nome = ?, logradouro = ?, numero = ?, bairro = ?, cidade = ?, estado = ?, cep = ?, telefone1 = ?, telefone2 = ? WHERE cpf = ?";
-        return jdbcTemplate.update(sql, cliente.getNome(), cliente.getLogradouro(), cliente.getNumero(), cliente.getBairro(), cliente.getCidade(), cliente.getEstado(), cliente.getCep(), cliente.getTelefone1(), cliente.getTelefone2(), cliente.getCpf());
+        return jdbcTemplate.update(sql, cliente.getNome(), cliente.getLogradouro(), cliente.getNumero(),
+                cliente.getBairro(), cliente.getCidade(), cliente.getEstado(), cliente.getCep(), cliente.getTelefone1(),
+                cliente.getTelefone2(), cliente.getCpf());
     }
 
-    //Deletar - Bernardo
+    // Deletar - Bernardo
     public int deleteByCpf(String cpf) {
         String sql = "DELETE FROM Cliente WHERE cpf = ?";
         return jdbcTemplate.update(sql, cpf);

@@ -1,6 +1,7 @@
 package com.pet_shop.pet_shop.Controller;
 
-import com.pet_shop.pet_shop.Model.Produto;
+import com.pet_shop.pet_shop.DTO.ProdutoRequestDTO;
+import com.pet_shop.pet_shop.DTO.ProdutoResponseDTO;
 import com.pet_shop.pet_shop.Service.ProdutoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -19,13 +20,13 @@ public class ProdutoController {
 
     // Endpoint para LER todos os produtos (GET /api/produtos)
     @GetMapping
-    public List<Produto> getAllProdutos() {
+    public List<ProdutoResponseDTO> getAllProdutos() {
         return produtoService.getAllProdutos();
     }
 
     // Endpoint para LER um produto por ID (GET /api/produtos/{id})
     @GetMapping("/{id}")
-    public ResponseEntity<Produto> getProdutoById(@PathVariable int id) {
+    public ResponseEntity<ProdutoResponseDTO> getProdutoById(@PathVariable int id) {
         return produtoService.getProdutoById(id)
                 .map(ResponseEntity::ok)
                 .orElse(ResponseEntity.notFound().build());
@@ -33,14 +34,15 @@ public class ProdutoController {
 
     // Endpoint para CRIAR um novo produto (POST /api/produtos)
     @PostMapping
-    public ResponseEntity<Produto> createProduto(@RequestBody Produto produto) {
-        Produto novoProduto = produtoService.createProduto(produto);
+    public ResponseEntity<ProdutoResponseDTO> createProduto(@RequestBody ProdutoRequestDTO produto) {
+        ProdutoResponseDTO novoProduto = produtoService.createProduto(produto);
         return ResponseEntity.status(HttpStatus.CREATED).body(novoProduto);
     }
 
     // Endpoint para ATUALIZAR um produto (PUT /api/produtos/{id})
     @PutMapping("/{id}")
-    public ResponseEntity<Produto> updateProduto(@PathVariable int id, @RequestBody Produto produtoDetails) {
+    public ResponseEntity<ProdutoResponseDTO> updateProduto(@PathVariable int id,
+            @RequestBody ProdutoRequestDTO produtoDetails) {
         return produtoService.updateProduto(id, produtoDetails)
                 .map(ResponseEntity::ok)
                 .orElse(ResponseEntity.notFound().build());
