@@ -29,36 +29,40 @@
 				</div>
 
 				<div class="consulta-container">
+					<p>
+						Selecione uma consulta pré-definida ou escreva sua própria SQL na
+						caixa de texto abaixo.
+					</p>
 					<div class="botoes-consulta">
 						<button
 							class="btn btn-secondary"
-							data-query="SELECT * FROM Cliente WHERE cidade = 'São Paulo';"
+							data-query="SELECT cod_produto, nome_produto, quantidade_estoque FROM Produto WHERE quantidade_estoque < 10;"
 						>
-							Consulta 1
+							Produtos com Estoque Baixo
 						</button>
 						<button
 							class="btn btn-secondary"
-							data-query="SELECT nome_produto, preco_venda FROM Produto WHERE preco_venda > 200;"
+							data-query="SELECT A.nome AS nome_animal, A.especie, C.nome AS nome_dono FROM Animal A JOIN Cliente C ON A.cpf_cliente = C.cpf WHERE C.cpf = '11122233344';"
 						>
-							Consulta 2
+							Animais por Cliente (JOIN)
 						</button>
 						<button
 							class="btn btn-secondary"
-							data-query="SELECT p.nome_produto, p.preco_venda, f.nome AS nome_fornecedor FROM Produto p JOIN Fornecedor f ON p.cnpjFornecedor = f.cnpj;"
+							data-query="SELECT tipo_servico, COUNT(*) AS quantidade FROM Agendamento GROUP BY tipo_servico;"
 						>
-							Consulta com JOIN
+							Contagem de Serviços
 						</button>
 						<button
 							class="btn btn-secondary"
-							data-query="SELECT * FROM Venda WHERE data_venda BETWEEN '2025-09-01' AND '2025-09-30';"
+							data-query="SELECT cpf, nome, cidade FROM Cliente WHERE nome LIKE '%Silva%';"
 						>
-							Consulta 4
+							Buscar Cliente por Nome
 						</button>
 					</div>
 					<div class="query-editor">
 						<textarea
 							id="sql-query-input"
-							placeholder="Digite sua consulta SQL aqui ou selecione uma acima..."
+							placeholder="Sua consulta SQL..."
 						></textarea>
 						<button id="executar-query-btn" class="btn btn-primary">
 							Executar
