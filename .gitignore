@@ -8,3 +8,6 @@
 /dataSources.local.xml
 
 /.idea
+
+# Ignorar a pasta do vs code
+.vscode/
