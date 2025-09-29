@@ -1,19 +1,11 @@
-package com.pet_shop.pet_shop.Model;
-
-import java.time.LocalDateTime;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+package com.pet_shop.pet_shop.DTO;
+import lombok.*;
 
 @Getter
 @Setter
-@AllArgsConstructor
-@NoArgsConstructor
-public class Cliente {
+public class ClienteRequestDTO {
     private String cpf;
     private String nome;
-    private LocalDateTime dataCadastro;
     private String logradouro;
     private String numero;
     private String bairro;
