@@ -17,4 +17,5 @@ public class Produto {
     private BigDecimal preco_venda;
     private int quantidade_estoque;
     private String cnpjFornecedor;
+
 }
