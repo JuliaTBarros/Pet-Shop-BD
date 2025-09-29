@@ -40,19 +40,13 @@ public class ClienteController {
     @GetMapping("/{cpf}")
     public ResponseEntity<ClienteResponseDTO> getClienteByCpf(@PathVariable String cpf) {
         ClienteResponseDTO cliente = clienteService.getClienteByCpf(cpf);
-        if (cliente != null) {
-            return ResponseEntity.ok(cliente);
-        }
-        return ResponseEntity.notFound().build();
+        return ResponseEntity.ok(cliente);
     }
 
     @PutMapping("/{cpf}")
     public ResponseEntity<ClienteResponseDTO> updateCliente(@PathVariable String cpf, @RequestBody ClienteRequestDTO clienteDTO) {
         ClienteResponseDTO clienteAtualizado = clienteService.updateCliente(cpf, clienteDTO);
-         if (clienteAtualizado != null) {
-            return ResponseEntity.ok(clienteAtualizado);
-        }
-        return ResponseEntity.notFound().build();
+        return ResponseEntity.ok(clienteAtualizado);
     }
 
     @DeleteMapping("/{cpf}")
@@ -61,4 +55,3 @@ public class ClienteController {
         return ResponseEntity.noContent().build();
     }
 }
-
