@@ -8,6 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 import org.springframework.jdbc.core.JdbcTemplate;
+
+import com.pet_shop.pet_shop.DTO.ClienteResponseDTO;
 import com.pet_shop.pet_shop.Model.Cliente;
 
 @Repository
@@ -57,6 +59,21 @@ public class ClienteRepository {
         } catch (Exception e) {
             return null;
         }
+    }
+
+    public List<ClienteResponseDTO> findByNomeContaining(String nomeParcial) {
+        String sql = "SELECT * FROM cliente WHERE nome LIKE ?";
+
+        return jdbcTemplate.query(sql, new Object[]{"%" + nomeParcial + "%"}, (rs, rowNum) -> {
+            Cliente cliente = new Cliente();
+            cliente.setCpf(rs.getString("cpf"));
+            cliente.setNome(rs.getString("nome"));
+            cliente.setDataCadastro(rs.getTimestamp("data_cadastro").toLocalDateTime());
+            cliente.setTelefone1(rs.getString("telefone1"));
+            cliente.setTelefone2(rs.getString("telefone2"));
+            cliente.setCidade(rs.getString("cidade"));
+            return new ClienteResponseDTO(cliente);
+        });
     }
 
     // Atualizar - Bernardo
