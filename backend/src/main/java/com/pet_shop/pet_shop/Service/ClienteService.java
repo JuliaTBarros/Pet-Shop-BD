@@ -4,6 +4,7 @@ import com.pet_shop.pet_shop.DTO.ClienteRequestDTO;
 import com.pet_shop.pet_shop.DTO.ClienteResponseDTO;
 import com.pet_shop.pet_shop.Model.Cliente;
 import com.pet_shop.pet_shop.Repository.ClienteRepository;
+import com.pet_shop.pet_shop.exception.ResourceNotFoundException; // IMPORTAR
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,7 +15,7 @@ import java.util.stream.Collectors;
 public class ClienteService {
 
     @Autowired
-    private com.pet_shop.pet_shop.Repository.ClienteRepository clienteRepository;
+    private ClienteRepository clienteRepository;
 
     public List<ClienteResponseDTO> getAllClientes() {
         return clienteRepository.findAll().stream().map(ClienteResponseDTO::new).collect(Collectors.toList());
@@ -22,10 +23,10 @@ public class ClienteService {
 
     public ClienteResponseDTO getClienteByCpf(String cpf) {
         Cliente cliente = clienteRepository.findByCpf(cpf);
-        if (cliente != null) {
-            return new ClienteResponseDTO(cliente);
+        if (cliente == null) {
+            throw new ResourceNotFoundException("Cliente com CPF '" + cpf + "' não encontrado.");
         }
-        return null;
+        return new ClienteResponseDTO(cliente);
     }
 
     public ClienteResponseDTO createCliente(ClienteRequestDTO clienteDTO) {
@@ -48,7 +49,7 @@ public class ClienteService {
     public ClienteResponseDTO updateCliente(String cpf, ClienteRequestDTO clienteDTO) {
         Cliente clienteExistente = clienteRepository.findByCpf(cpf);
         if (clienteExistente == null) {
-            return null;
+            throw new ResourceNotFoundException("Não é possível atualizar. Cliente com CPF '" + cpf + "' não encontrado.");
         }
 
         clienteExistente.setNome(clienteDTO.getNome());
@@ -66,6 +67,10 @@ public class ClienteService {
     }
 
     public void deleteCliente(String cpf) {
+        // revisar essa parte
+        if (clienteRepository.findByCpf(cpf) == null) {
+            throw new ResourceNotFoundException("Não é possível deletar. Cliente com CPF '" + cpf + "' não encontrado.");
+        }
         clienteRepository.deleteByCpf(cpf);
     }
 }
