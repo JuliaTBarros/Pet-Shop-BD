@@ -1,91 +1,86 @@
-# Projeto Integrado: Sistema de Gerenciamento com Dashboard
+# Sistema de Gestão para Pet Shop
 
-Este projeto foi desenvolvido para atender aos requisitos das disciplinas de **Banco de Dados** e **Estatística e Probabilidade**. O objetivo é criar um sistema completo para gerenciar informações de um cenário específico ("minimundo"), apresentando os dados através de uma interface web funcional com um dashboard integrado.
+![Status do Projeto](https://img.shields.io/badge/status-em--desenvolvimento-yellow)
+![Java](https://img.shields.io/badge/java-17%2B-blue)
+![Spring Boot](https://img.shields.io/badge/Spring%20Boot-3.x-brightgreen)
+![Maven](https://img.shields.io/badge/build-Maven-red)
 
-## 🏛️ Arquitetura
+## 📄 Descrição do Projeto
 
-O sistema é construído sobre uma arquitetura **Cliente-Servidor desacoplada**:
+Este projeto consiste no desenvolvimento do backend para um sistema de gestão de Pet Shop. O objetivo é criar uma aplicação robusta para modelar e gerenciar as principais operações do negócio, como cadastro de clientes, pets, funcionários e controle de vendas e consultas.
 
-* **Backend (API REST):** Desenvolvido em **Java** com o micro-framework **Javalin**. É responsável por toda a lógica de negócios e pela comunicação com o banco de dados via **JDBC puro**, sem o uso de frameworks ORM.
-* **Frontend (Aplicação Web):** Construído com **HTML, CSS e JavaScript (Vanilla JS)**. Consome os dados da API REST de forma assíncrona para criar uma experiência de usuário dinâmica e interativa.
+O sistema está sendo construído com foco em uma arquitetura limpa, utilizando classes de modelo (POJOs) para representar as entidades do domínio, servindo como base para a implementação das regras de negócio e da camada de persistência.
 
-## ✨ Features
+## ✨ Entidades Modeladas
 
-* **Gerenciamento de Dados (CRUD):** Interface para realizar operações de Inserção, Leitura, Alteração e Deleção em pelo menos 2 tabelas do banco de dados.
-* **Visualização de Dados:** Exibição de dados tabulares e resultados de consultas personalizadas.
-* **Consultas Avançadas:** Implementação e visualização de pelo menos 4 consultas SQL distintas, incluindo ao menos uma com `JOIN`.
-* **Dashboard de Estatística:** Uma seção dedicada à exibição dos gráficos (dispersão, histogramas, pizza) gerados para o trabalho da disciplina de Estatística e Probabilidade.
+O núcleo do sistema é composto pelas seguintes entidades de domínio:
+
+* **Cliente**: Donos dos animais de estimação.
+* **Pet**: Animais de estimação dos clientes.
+* **Funcionario**: Classe base para os colaboradores do Pet Shop.
+    * **Veterinario**: Funcionário com especialização veterinária (CRMV).
+    * **Atendente**: Funcionário responsável pelo atendimento geral.
+* **Fornecedor**: Empresas que fornecem produtos para o Pet Shop.
+* **Venda**: Registros de transações comerciais.
+* **Consulta**: Registros de atendimentos veterinários.
+* **Exame**: Exames solicitados durante uma consulta.
 
 ## 🛠️ Tecnologias Utilizadas
 
-**Backend:**
+* **Java 17**: Linguagem de programação principal.
+* **Spring Boot**: Framework para criação da aplicação e serviços web.
+* **Maven**: Ferramenta para gerenciamento de dependências e build do projeto.
 
-* Java (JDK 11+)
-* Javalin (Servidor web leve)
-* Gson (Manipulação de JSON)
-* JDBC Driver (para o SGBD escolhido)
-* Maven (Gerenciador de dependências)
+## 📁 Estrutura do Projeto
 
-**Frontend:**
+O projeto segue a estrutura padrão do Maven, com o código-fonte localizado em `src/main/java`. As principais pastas são:
 
-* HTML5
-* CSS3
-* JavaScript (ES6+)
+* `com.pet_shop.pet_shop.Model`: Contém as classes de domínio (POJOs) que representam as entidades do sistema, como `Cliente`, `Pet`, `Funcionario`, etc.
+* `com.pet_shop.pet_shop.Controller`: (A ser criado) Responsável por expor os endpoints da API REST.
+* `com.pet_shop.pet_shop.Service`: (A ser criado) Onde a lógica de negócio será implementada.
+* `com.pet_shop.pet_shop.Repository`: (A ser criado) Camada de acesso a dados (interação com o banco de dados).
 
-**Banco de Dados:**
+## 🚀 Como Começar
 
-* MySQL
-
-## 🚀 Como Executar o Projeto
+Siga os passos abaixo para clonar e executar o projeto em seu ambiente local.
 
 ### Pré-requisitos
 
-* Java JDK 11 ou superior instalado.
-* Apache Maven instalado.
-* Um SGBD compatível instalado e em execução.
+* **JDK 17** ou superior.
+* **Apache Maven** instalado e configurado.
+* Uma IDE de sua preferência (ex: IntelliJ IDEA, VS Code com extensões Java, Eclipse).
 
-### 1. Configuração do Banco de Dados
+### Passos
 
-1. Crie um novo banco de dados no seu SGBD.
-2. Execute os scripts SQL localizados na pasta `/sql` para criar as tabelas (`criação.sql`) e inserir os dados iniciais (`inserção.sql`).
-3. Configure as credenciais de acesso ao banco de dados no arquivo de configuração do backend.
+1.  **Clone o repositório:**
+    ```bash
+    git clone [https://github.com/JuliaTBarros/Pet-Shop-BD.git](https://github.com/JuliaTBarros/Pet-Shop-BD.git)
+    ```
 
-### 2. Executando o Backend (API)
+2.  **Navegue até o diretório do projeto:**
+    ```bash
+    cd Pet-Shop-BD
+    ```
 
-1. Navegue até a pasta do projeto backend.
-2. Compile o projeto:
-
+3.  **Compile o projeto com o Maven:**
+    (Este passo irá baixar todas as dependências)
     ```bash
     mvn clean install
     ```
 
-3. Execute a aplicação:
-
+4.  **Execute a aplicação:**
     ```bash
-    java -jar target/nome-do-seu-artefato.jar
+    mvn spring-boot:run
     ```
 
-4. O servidor da API estará rodando em `http://localhost:7070`.
+Após a execução, a aplicação estará rodando e pronta para receber requisições (assim que os Controllers forem implementados).
 
-### 3. Executando o Frontend
+## 👩‍💻 Autores
 
-1. Navegue até a pasta do projeto frontend.
-2. A maneira mais fácil de servir os arquivos é utilizando uma extensão como o **Live Server** para o VS Code.
-3. Alternativamente, basta abrir o arquivo `index.html` diretamente no seu navegador.
+**Julia T. Barros**
 
-## 📋 Endpoints da API
+**Maria Clara Neves**
 
-| Verbo  | Endpoint           | Descrição                                 |
-| :----- | :----------------- | :---------------------------------------- |
-| `GET`  | `/api/tabela1`     | Retorna todos os registros da Tabela 1.   |
-| `POST` | `/api/tabela1`     | Cria um novo registro na Tabela 1.        |
-| `PUT`  | `/api/tabela1/{id}`| Atualiza um registro existente.           |
-| `DELETE`| `/api/tabela1/{id}`| Deleta um registro específico.            |
-| ...    | ...                | (adicionar outros endpoints aqui)         |
+**Vinícius Bernardo**
 
-## 👥 Equipe
-
-* Henrique Figuêiredo Tefile
-* Julia Torres de Barros
-* Maria Clara Neves
-* Vinícius Bernardo da Silva
+**Henrique Figueireido**
