@@ -1,19 +1,40 @@
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+package com.pet_shop.pet_shop.Model;
 
-@Entity
-@Table(name = "fornecedor")
 public class Fornecedor {
-
-    @Id
-    @Column(name = "cnpj", length = 14)
     private String cnpj;
-
-    @Column(name = "razao_social", length = 200, nullable = false)
     private String razaoSocial;
-
-    @Column(name = "contato_principal", length = 100)
     private String contatoPrincipal;
+
+    public Fornecedor() {
+    }
+
+    public Fornecedor(String cnpj, String razaoSocial, String contatoPrincipal) {
+        this.cnpj = cnpj;
+        this.razaoSocial = razaoSocial;
+        this.contatoPrincipal = contatoPrincipal;
+    }
+
+    public String getCnpj() {
+        return cnpj;
+    }
+
+    public void setCnpj(String cnpj) {
+        this.cnpj = cnpj;
+    }
+
+    public String getRazaoSocial() {
+        return razaoSocial;
+    }
+
+    public void setRazaoSocial(String razaoSocial) {
+        this.razaoSocial = razaoSocial;
+    }
+
+    public String getContatoPrincipal() {
+        return contatoPrincipal;
+    }
+
+    public void setContatoPrincipal(String contatoPrincipal) {
+        this.contatoPrincipal = contatoPrincipal;
+    }
 }

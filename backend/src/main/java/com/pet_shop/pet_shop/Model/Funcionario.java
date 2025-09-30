@@ -1,26 +1,62 @@
-import javax.persistence.*;
+package com.pet_shop.pet_shop.Model;
+
 import java.time.LocalDate;
 
-@Entity
-@Table(name = "funcionario")
-@Inheritance(strategy = InheritanceType.JOINED)
 public class Funcionario {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "cod_funcionario")
     private Integer codFuncionario;
-
-    @Column(name = "nome", length = 150, nullable = false)
     private String nome;
-
-    @Column(name = "cpf", length = 11, nullable = false, unique = true)
     private String cpf;
-
-    @Column(name = "data_admissao", nullable = false)
     private LocalDate dataAdmissao;
+    private Integer codSupervisor;
 
-    @ManyToOne
-    @JoinColumn(name = "cod_supervisor")
-    private Funcionario supervisor;
+    public Funcionario() {
+    }
+
+    public Funcionario(Integer codFuncionario, String nome, String cpf, LocalDate dataAdmissao, Integer codSupervisor) {
+        this.codFuncionario = codFuncionario;
+        this.nome = nome;
+        this.cpf = cpf;
+        this.dataAdmissao = dataAdmissao;
+        this.codSupervisor = codSupervisor;
+    }
+
+    public Integer getCodFuncionario() {
+        return codFuncionario;
+    }
+
+    public void setCodFuncionario(Integer codFuncionario) {
+        this.codFuncionario = codFuncionario;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public String getCpf() {
+        return cpf;
+    }
+
+    public void setCpf(String cpf) {
+        this.cpf = cpf;
+    }
+
+    public LocalDate getDataAdmissao() {
+        return dataAdmissao;
+    }
+
+    public void setDataAdmissao(LocalDate dataAdmissao) {
+        this.dataAdmissao = dataAdmissao;
+    }
+
+    public Integer getCodSupervisor() {
+        return codSupervisor;
+    }
+
+    public void setCodSupervisor(Integer codSupervisor) {
+        this.codSupervisor = codSupervisor;
+    }
 }

@@ -1,13 +1,24 @@
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.PrimaryKeyJoinColumn;
-import javax.persistence.Table;
+package com.pet_shop.pet_shop.Model;
 
-@Entity
-@Table(name = "veterinario")
-@PrimaryKeyJoinColumn(name = "cod_funcionario")
+import java.time.LocalDate;
+
 public class Veterinario extends Funcionario {
-
-    @Column(name = "CRMV", length = 10, nullable = false, unique = true)
     private String crmv;
+
+    public Veterinario() {
+        super();
+    }
+
+    public Veterinario(Integer codFuncionario, String nome, String cpf, LocalDate dataAdmissao, Integer codSupervisor, String crmv) {
+        super(codFuncionario, nome, cpf, dataAdmissao, codSupervisor);
+        this.crmv = crmv;
+    }
+
+    public String getCrmv() {
+        return crmv;
+    }
+
+    public void setCrmv(String crmv) {
+        this.crmv = crmv;
+    }
 }

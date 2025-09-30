@@ -1,9 +1,8 @@
-import javax.persistence.Entity;
-import javax.persistence.PrimaryKeyJoinColumn;
-import javax.persistence.Table;
+package com.pet_shop.pet_shop.Model;
 
-@Entity
-@Table(name = "atendente")
-@PrimaryKeyJoinColumn(name = "cod_funcionario")
 public class Atendente extends Funcionario {
+    
+    public Atendente() {
+        super();
+    }
 }
