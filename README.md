@@ -1,91 +1,134 @@
-# Projeto Integrado: Sistema de Gerenciamento com Dashboard
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>README - Sistema de Gestão para Pet Shop</title>
+    <style>
+        body { 
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji"; 
+            line-height: 1.6; 
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h1, h2 { 
+            border-bottom: 1px solid #eaecef; 
+            padding-bottom: 0.3em;
+        }
+        code { 
+            font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+            background-color: #f6f8fa;
+            padding: 0.2em 0.4em;
+            margin: 0;
+            font-size: 85%;
+            border-radius: 6px;
+        }
+        pre {
+            background-color: #f6f8fa;
+            padding: 16px;
+            overflow: auto;
+            border-radius: 6px;
+        }
+        pre code {
+            padding: 0;
+            margin: 0;
+            background-color: transparent;
+        }
+        ul {
+            padding-left: 20px;
+        }
+        img {
+            margin-right: 5px;
+        }
+    </style>
+</head>
+<body>
 
-Este projeto foi desenvolvido para atender aos requisitos das disciplinas de **Banco de Dados** e **Estatística e Probabilidade**. O objetivo é criar um sistema completo para gerenciar informações de um cenário específico ("minimundo"), apresentando os dados através de uma interface web funcional com um dashboard integrado.
+    <h1>Sistema de Gestão para Pet Shop</h1>
 
-## 🏛️ Arquitetura
+    <p>
+        <img src="https://img.shields.io/badge/status-em--desenvolvimento-yellow" alt="Status do Projeto">
+        <img src="https://img.shields.io/badge/java-17%2B-blue" alt="Java">
+        <img src="https://img.shields.io/badge/Spring%20Boot-3.x-brightgreen" alt="Spring Boot">
+        <img src="https://img.shields.io/badge/build-Maven-red" alt="Maven">
+    </p>
 
-O sistema é construído sobre uma arquitetura **Cliente-Servidor desacoplada**:
+    <h2>📄 Descrição do Projeto</h2>
+    <p>
+        Este projeto consiste no desenvolvimento do backend para um sistema de gestão de Pet Shop. O objetivo é criar uma aplicação robusta para modelar e gerenciar as principais operações do negócio, como cadastro de clientes, pets, funcionários e controle de vendas e consultas.
+    </p>
+    <p>
+        O sistema está sendo construído com foco em uma arquitetura limpa, utilizando classes de modelo (POJOs) para representar as entidades do domínio, servindo como base para a implementação das regras de negócio e da camada de persistência.
+    </p>
 
-* **Backend (API REST):** Desenvolvido em **Java** com o micro-framework **Javalin**. É responsável por toda a lógica de negócios e pela comunicação com o banco de dados via **JDBC puro**, sem o uso de frameworks ORM.
-* **Frontend (Aplicação Web):** Construído com **HTML, CSS e JavaScript (Vanilla JS)**. Consome os dados da API REST de forma assíncrona para criar uma experiência de usuário dinâmica e interativa.
+    <h2>✨ Entidades Modeladas</h2>
+    <p>O núcleo do sistema é composto pelas seguintes entidades de domínio:</p>
+    <ul>
+        <li><strong>Cliente</strong>: Donos dos animais de estimação.</li>
+        <li><strong>Pet</strong>: Animais de estimação dos clientes.</li>
+        <li><strong>Funcionario</strong>: Classe base para os colaboradores do Pet Shop.
+            <ul>
+                <li><strong>Veterinario</strong>: Funcionário com especialização veterinária (CRMV).</li>
+                <li><strong>Atendente</strong>: Funcionário responsável pelo atendimento geral.</li>
+            </ul>
+        </li>
+        <li><strong>Fornecedor</strong>: Empresas que fornecem produtos para o Pet Shop.</li>
+        <li><strong>Venda</strong>: Registros de transações comerciais.</li>
+        <li><strong>Consulta</strong>: Registros de atendimentos veterinários.</li>
+        <li><strong>Exame</strong>: Exames solicitados durante uma consulta.</li>
+    </ul>
 
-## ✨ Features
+    <h2>🛠️ Tecnologias Utilizadas</h2>
+    <ul>
+        <li><strong>Java 17</strong>: Linguagem de programação principal.</li>
+        <li><strong>Spring Boot</strong>: Framework para criação da aplicação e serviços web.</li>
+        <li><strong>Maven</strong>: Ferramenta para gerenciamento de dependências e build do projeto.</li>
+    </ul>
 
-* **Gerenciamento de Dados (CRUD):** Interface para realizar operações de Inserção, Leitura, Alteração e Deleção em pelo menos 2 tabelas do banco de dados.
-* **Visualização de Dados:** Exibição de dados tabulares e resultados de consultas personalizadas.
-* **Consultas Avançadas:** Implementação e visualização de pelo menos 4 consultas SQL distintas, incluindo ao menos uma com `JOIN`.
-* **Dashboard de Estatística:** Uma seção dedicada à exibição dos gráficos (dispersão, histogramas, pizza) gerados para o trabalho da disciplina de Estatística e Probabilidade.
+    <h2>📁 Estrutura do Projeto</h2>
+    <p>O projeto segue a estrutura padrão do Maven, com o código-fonte localizado em <code>src/main/java</code>. As principais pastas são:</p>
+    <ul>
+        <li><code>com.pet_shop.pet_shop.Model</code>: Contém as classes de domínio (POJOs) que representam as entidades do sistema, como <code>Cliente</code>, <code>Pet</code>, <code>Funcionario</code>, etc.</li>
+        <li><code>com.pet_shop.pet_shop.Controller</code>: (A ser criado) Responsável por expor os endpoints da API REST.</li>
+        <li><code>com.pet_shop.pet_shop.Service</code>: (A ser criado) Onde a lógica de negócio será implementada.</li>
+        <li><code>com.pet_shop.pet_shop.Repository</code>: (A ser criado) Camada de acesso a dados (interação com o banco de dados).</li>
+    </ul>
 
-## 🛠️ Tecnologias Utilizadas
+    <h2>🚀 Como Começar</h2>
+    <p>Siga os passos abaixo para clonar e executar o projeto em seu ambiente local.</p>
+    <h3>Pré-requisitos</h3>
+    <ul>
+        <li><strong>JDK 17</strong> ou superior.</li>
+        <li><strong>Apache Maven</strong> instalado e configurado.</li>
+        <li>Uma IDE de sua preferência (ex: IntelliJ IDEA, VS Code com extensões Java, Eclipse).</li>
+    </ul>
+    <h3>Passos</h3>
+    <ol>
+        <li><strong>Clone o repositório:</strong>
+            <pre><code>git clone https://github.com/JuliaTBarros/Pet-Shop-BD.git</code></pre>
+        </li>
+        <li><strong>Navegue até o diretório do projeto:</strong>
+            <pre><code>cd Pet-Shop-BD</code></pre>
+        </li>
+        <li><strong>Compile o projeto com o Maven:</strong>
+            <p>(Este passo irá baixar todas as dependências)</p>
+            <pre><code>mvn clean install</code></pre>
+        </li>
+        <li><strong>Execute a aplicação:</strong>
+            <pre><code>mvn spring-boot:run</code></pre>
+        </li>
+    </ol>
+    <p>Após a execução, a aplicação estará rodando e pronta para receber requisições (assim que os Controllers forem implementados).</p>
 
-**Backend:**
+    <h2>👩‍💻 Autora</h2>
+    <p>
+        <strong>Júlia T. Barros</strong><br>
+        <strong>Maria Clara Neves</strong><br>
+        <strong>Vinícius Bernardo</strong><br>
+        <strong>Henrique Figueireido</strong>
+    </p>
 
-* Java (JDK 11+)
-* Javalin (Servidor web leve)
-* Gson (Manipulação de JSON)
-* JDBC Driver (para o SGBD escolhido)
-* Maven (Gerenciador de dependências)
-
-**Frontend:**
-
-* HTML5
-* CSS3
-* JavaScript (ES6+)
-
-**Banco de Dados:**
-
-* MySQL
-
-## 🚀 Como Executar o Projeto
-
-### Pré-requisitos
-
-* Java JDK 11 ou superior instalado.
-* Apache Maven instalado.
-* Um SGBD compatível instalado e em execução.
-
-### 1. Configuração do Banco de Dados
-
-1. Crie um novo banco de dados no seu SGBD.
-2. Execute os scripts SQL localizados na pasta `/sql` para criar as tabelas (`criação.sql`) e inserir os dados iniciais (`inserção.sql`).
-3. Configure as credenciais de acesso ao banco de dados no arquivo de configuração do backend.
-
-### 2. Executando o Backend (API)
-
-1. Navegue até a pasta do projeto backend.
-2. Compile o projeto:
-
-    ```bash
-    mvn clean install
-    ```
-
-3. Execute a aplicação:
-
-    ```bash
-    java -jar target/nome-do-seu-artefato.jar
-    ```
-
-4. O servidor da API estará rodando em `http://localhost:7070`.
-
-### 3. Executando o Frontend
-
-1. Navegue até a pasta do projeto frontend.
-2. A maneira mais fácil de servir os arquivos é utilizando uma extensão como o **Live Server** para o VS Code.
-3. Alternativamente, basta abrir o arquivo `index.html` diretamente no seu navegador.
-
-## 📋 Endpoints da API
-
-| Verbo  | Endpoint           | Descrição                                 |
-| :----- | :----------------- | :---------------------------------------- |
-| `GET`  | `/api/tabela1`     | Retorna todos os registros da Tabela 1.   |
-| `POST` | `/api/tabela1`     | Cria um novo registro na Tabela 1.        |
-| `PUT`  | `/api/tabela1/{id}`| Atualiza um registro existente.           |
-| `DELETE`| `/api/tabela1/{id}`| Deleta um registro específico.            |
-| ...    | ...                | (adicionar outros endpoints aqui)         |
-
-## 👥 Equipe
-
-* Henrique Figuêiredo Tefile
-* Julia Torres de Barros
-* Maria Clara Neves
-* Vinícius Bernardo da Silva
+</body>
+</html>
