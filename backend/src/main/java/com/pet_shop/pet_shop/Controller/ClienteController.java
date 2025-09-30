@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.pet_shop.pet_shop.DTO.ClienteRequestDTO;
@@ -41,6 +42,12 @@ public class ClienteController {
     public ResponseEntity<ClienteResponseDTO> getClienteByCpf(@PathVariable String cpf) {
         ClienteResponseDTO cliente = clienteService.getClienteByCpf(cpf);
         return ResponseEntity.ok(cliente);
+    }
+
+    @GetMapping("/buscar")
+    public ResponseEntity<List<ClienteResponseDTO>> getClientesPorNome(@RequestParam String nome) {
+        List<ClienteResponseDTO> clientes = clienteService.buscarClientesPorNome(nome);
+        return ResponseEntity.ok(clientes);
     }
 
     @PutMapping("/{cpf}")

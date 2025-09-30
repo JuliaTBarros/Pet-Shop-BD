@@ -29,6 +29,13 @@ public class ClienteService {
         return new ClienteResponseDTO(cliente);
     }
 
+    public List<ClienteResponseDTO> buscarClientesPorNome(String nome) {
+        if (nome == null || nome.trim().isEmpty()) {
+            throw new IllegalArgumentException("O termo de busca não pode ser vazio.");
+        }
+        return clienteRepository.findByNomeContaining(nome);
+    }
+
     public ClienteResponseDTO createCliente(ClienteRequestDTO clienteDTO) {
         Cliente cliente = new Cliente();
         cliente.setCpf(clienteDTO.getCpf());
