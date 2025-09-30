@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
 	let editMode = false;
 	let editCpf = null;
 
-	const API_URL = 'http://localhost:8080/clientes';
+	const API_URL = 'http://localhost:8080/api/clientes';
 
 	// Abre o modal para cadastro
 	openClienteModalBtn.addEventListener('click', () => {

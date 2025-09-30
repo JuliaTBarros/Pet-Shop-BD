@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
 	let editMode = false;
 	let editId = null;
 
-	const API_URL = 'http://localhost:8080/produtos';
+	const API_URL = 'http://localhost:8080/api/produtos';
 
 	// Abre o modal para cadastro
 	openProdutoModalBtn.addEventListener('click', () => {
