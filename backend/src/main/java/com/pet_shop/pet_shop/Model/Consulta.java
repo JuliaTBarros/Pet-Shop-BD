@@ -1,34 +1,82 @@
-import javax.persistence.*;
+package com.pet_shop.pet_shop.Model;
+
 import java.time.LocalDateTime;
 
-@Entity
-@Table(name = "consulta")
 public class Consulta {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "num_consulta")
     private Integer numConsulta;
-
-    @Column(name = "data_hora", nullable = false)
     private LocalDateTime dataHora;
-
-    @Lob
-    @Column(name = "sintomas_relatados")
     private String sintomasRelatados;
-
-    @Lob
-    @Column(name = "diagnostico")
     private String diagnostico;
+    private String cpfClientePet;
+    private String nomePet;
+    private Integer codVeterinario;
 
-    @ManyToOne
-    @JoinColumns({
-        @JoinColumn(name = "cpf_cliente_pet", referencedColumnName = "cpf_cliente", nullable = false),
-        @JoinColumn(name = "nome_pet", referencedColumnName = "nome_pet", nullable = false)
-    })
-    private Pet pet;
+    public Consulta() {
+    }
 
-    @ManyToOne
-    @JoinColumn(name = "cod_veterinario", referencedColumnName = "cod_funcionario", nullable = false)
-    private Veterinario veterinario;
+    public Consulta(Integer numConsulta, LocalDateTime dataHora, String sintomasRelatados, String diagnostico, String cpfClientePet, String nomePet, Integer codVeterinario) {
+        this.numConsulta = numConsulta;
+        this.dataHora = dataHora;
+        this.sintomasRelatados = sintomasRelatados;
+        this.diagnostico = diagnostico;
+        this.cpfClientePet = cpfClientePet;
+        this.nomePet = nomePet;
+        this.codVeterinario = codVeterinario;
+    }
+
+    public Integer getNumConsulta() {
+        return numConsulta;
+    }
+
+    public void setNumConsulta(Integer numConsulta) {
+        this.numConsulta = numConsulta;
+    }
+
+    public LocalDateTime getDataHora() {
+        return dataHora;
+    }
+
+    public void setDataHora(LocalDateTime dataHora) {
+        this.dataHora = dataHora;
+    }
+
+    public String getSintomasRelatados() {
+        return sintomasRelatados;
+    }
+
+    public void setSintomasRelatados(String sintomasRelatados) {
+        this.sintomasRelatados = sintomasRelatados;
+    }
+
+    public String getDiagnostico() {
+        return diagnostico;
+    }
+
+    public void setDiagnostico(String diagnostico) {
+        this.diagnostico = diagnostico;
+    }
+
+    public String getCpfClientePet() {
+        return cpfClientePet;
+    }
+
+    public void setCpfClientePet(String cpfClientePet) {
+        this.cpfClientePet = cpfClientePet;
+    }
+
+    public String getNomePet() {
+        return nomePet;
+    }
+
+    public void setNomePet(String nomePet) {
+        this.nomePet = nomePet;
+    }
+
+    public Integer getCodVeterinario() {
+        return codVeterinario;
+    }
+
+    public void setCodVeterinario(Integer codVeterinario) {
+        this.codVeterinario = codVeterinario;
+    }
 }

@@ -1,55 +1,52 @@
-import javax.persistence.*;
-import java.io.Serializable;
+package com.pet_shop.pet_shop.Model;
+
 import java.time.LocalDate;
-import java.util.Objects;
 
-@Entity
-@Table(name = "exame")
 public class Exame {
-
-    @EmbeddedId
-    private ExameId id;
-
-    @ManyToOne
-    @MapsId("numConsulta")
-    @JoinColumn(name = "num_consulta")
-    private Consulta consulta;
-
-    @Column(name = "data_solicitacao", nullable = false)
-    private LocalDate dataSolicitacao;
-
-    @Lob
-    @Column(name = "resultado")
-    private String resultado;
-}
-
-@Embeddable
-class ExameId implements Serializable {
-
-    @Column(name = "num_consulta")
     private Integer numConsulta;
-
-    @Column(name = "nome_exame", length = 100)
     private String nomeExame;
-    
-    public ExameId() {}
+    private LocalDate dataSolicitacao;
+    private String resultado;
 
-    public ExameId(Integer numConsulta, String nomeExame) {
+    public Exame() {
+    }
+
+    public Exame(Integer numConsulta, String nomeExame, LocalDate dataSolicitacao, String resultado) {
         this.numConsulta = numConsulta;
+        this.nomeExame = nomeExame;
+        this.dataSolicitacao = dataSolicitacao;
+        this.resultado = resultado;
+    }
+
+    public Integer getNumConsulta() {
+        return numConsulta;
+    }
+
+    public void setNumConsulta(Integer numConsulta) {
+        this.numConsulta = numConsulta;
+    }
+
+    public String getNomeExame() {
+        return nomeExame;
+    }
+
+    public void setNomeExame(String nomeExame) {
         this.nomeExame = nomeExame;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        ExameId exameId = (ExameId) o;
-        return Objects.equals(numConsulta, exameId.numConsulta) &&
-               Objects.equals(nomeExame, exameId.nomeExame);
+    public LocalDate getDataSolicitacao() {
+        return dataSolicitacao;
     }
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(numConsulta, nomeExame);
+    public void setDataSolicitacao(LocalDate dataSolicitacao) {
+        this.dataSolicitacao = dataSolicitacao;
+    }
+
+    public String getResultado() {
+        return resultado;
+    }
+
+    public void setResultado(String resultado) {
+        this.resultado = resultado;
     }
 }

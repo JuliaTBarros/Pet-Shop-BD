@@ -1,72 +1,72 @@
-import javax.persistence.*;
-import java.io.Serializable;
+package com.pet_shop.pet_shop.Model;
+
 import java.time.LocalDate;
-import java.util.Objects;
 
-@Entity
-@Table(name = "pet")
 public class Pet {
-
-    @EmbeddedId
-    private PetId id;
-
-    @ManyToOne
-    @MapsId("cpfCliente")
-    @JoinColumn(name = "cpf_cliente", referencedColumnName = "cpf")
-    private Cliente cliente;
-
-    @Column(name = "especie", length = 30, nullable = false)
+    private String cpfCliente;
+    private String nomePet;
     private String especie;
-
-    @Column(name = "raca", length = 50, nullable = false)
     private String raca;
-
-    @Column(name = "data_nascimento")
     private LocalDate dataNascimento;
-
-    @Lob
-    @Column(name = "observacoes")
     private String observacoes;
 
-    public Pet() {}
+    public Pet() {
+    }
 
-    public Pet(PetId id, Cliente cliente, String especie, String raca, LocalDate dataNascimento, String observacoes) {
-        this.id = id;
-        this.cliente = cliente;
+    public Pet(String cpfCliente, String nomePet, String especie, String raca, LocalDate dataNascimento, String observacoes) {
+        this.cpfCliente = cpfCliente;
+        this.nomePet = nomePet;
         this.especie = especie;
         this.raca = raca;
         this.dataNascimento = dataNascimento;
         this.observacoes = observacoes;
     }
-}
 
-@Embeddable
-class PetId implements Serializable {
+    public String getCpfCliente() {
+        return cpfCliente;
+    }
 
-    @Column(name = "cpf_cliente", length = 11)
-    private String cpfCliente;
-
-    @Column(name = "nome_pet", length = 50)
-    private String nomePet;
-
-    public PetId() {}
-
-    public PetId(String cpfCliente, String nomePet) {
+    public void setCpfCliente(String cpfCliente) {
         this.cpfCliente = cpfCliente;
+    }
+
+    public String getNomePet() {
+        return nomePet;
+    }
+
+    public void setNomePet(String nomePet) {
         this.nomePet = nomePet;
     }
-    
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        PetId petId = (PetId) o;
-        return Objects.equals(cpfCliente, petId.cpfCliente) &&
-               Objects.equals(nomePet, petId.nomePet);
+
+    public String getEspecie() {
+        return especie;
     }
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(cpfCliente, nomePet);
+    public void setEspecie(String especie) {
+        this.especie = especie;
+    }
+
+    public String getRaca() {
+        return raca;
+    }
+
+    public void setRaca(String raca) {
+        this.raca = raca;
+    }
+
+    public LocalDate getDataNascimento() {
+        return dataNascimento;
+    }
+
+    public void setDataNascimento(LocalDate dataNascimento) {
+        this.dataNascimento = dataNascimento;
+    }
+
+    public String getObservacoes() {
+        return observacoes;
+    }
+
+    public void setObservacoes(String observacoes) {
+        this.observacoes = observacoes;
     }
 }
