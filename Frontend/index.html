@@ -7,6 +7,8 @@
 
 		<link rel="stylesheet" href="css/main.css" />
 		<link rel="stylesheet" href="css/navigation.css" />
+		<link rel="stylesheet" href="css/modal.css" />
+		<link rel="stylesheet" href="css/image-modal.css" />
 	</head>
 	<body>
 		<header class="main-header">
@@ -24,14 +26,132 @@
 		<main class="main-content">
 			<section id="dashboard-section" class="content-section">
 				<h2>Dashboard de Estatística</h2>
-				<p>
-					Os gráficos gerados para a disciplina de Estatística serão exibidos
-					aqui.
-				</p>
-				<div class="charts-container"></div>
+
+				<div class="charts-container">
+					<figure>
+						<img
+							src="assets/graph1.jpg"
+							alt="Gráfico de Gasto e Idade do Cliente"
+						/>
+						<figcaption>Gráfico 1: Gasto e Idade do Cliente.</figcaption>
+					</figure>
+					<figure>
+						<img src="assets/graph2.jpg" alt="Gráfico de Satisfação e Gasto" />
+						<figcaption>Gráfico 2: Satisfação e Gasto.</figcaption>
+					</figure>
+					<figure>
+						<img
+							src="assets/graph3.jpg"
+							alt="Gráfico de Distância e Frequência de Visitas"
+						/>
+						<figcaption>
+							Gráfico 3: Distância e Frequência de Visitas.
+						</figcaption>
+					</figure>
+					<figure>
+						<img src="assets/graph4.jpg" alt="Gráfico de Peso e Idade do Pet" />
+						<figcaption>Gráfico 4: Peso e Idade do Pet.</figcaption>
+					</figure>
+					<figure>
+						<img
+							src="assets/graph5.jpg"
+							alt="Gráfico de Gasto e Frequência de Visitas"
+						/>
+						<figcaption>Gráfico 5: Gasto e Frequência de Visitas.</figcaption>
+					</figure>
+					<figure>
+						<img
+							src="assets/graph6.jpg"
+							alt="Gráfico de Distribuição das Idades dos Clientes"
+						/>
+						<figcaption>
+							Gráfico 6: Distribuição das Idades dos Clientes (Histograma).
+						</figcaption>
+					</figure>
+					<figure>
+						<img
+							src="assets/graph7.jpg"
+							alt="Gráfico de Distribuição dos Gastos Mensais"
+						/>
+						<figcaption>
+							Gráfico 7: Distribuição dos Gastos Mensais (Histograma).
+						</figcaption>
+					</figure>
+					<figure>
+						<img
+							src="assets/graph8.jpg"
+							alt="Gráfico de Contagem por Tipo de Pet"
+						/>
+						<figcaption>
+							Gráfico 8: Contagem por Tipo de Pet (Gráfico de Barras).
+						</figcaption>
+					</figure>
+					<figure>
+						<img
+							src="assets/graph9.jpg"
+							alt="Gráfico de Satisfação por Serviço"
+						/>
+						<figcaption>
+							Gráfico 9: Satisfação por Serviço (Gráfico de Barras).
+						</figcaption>
+					</figure>
+					<figure>
+						<img
+							src="assets/graph10.jpg"
+							alt="Gráfico de Gasto Médio por Gênero"
+						/>
+						<figcaption>
+							Gráfico 10: Gasto Médio por Gênero (Gráfico de Barras).
+						</figcaption>
+					</figure>
+					<figure>
+						<img
+							src="assets/graph11.jpg"
+							alt="Gráfico de Proporção de Clientes por Gênero"
+						/>
+						<figcaption>
+							Gráfico 11: Proporção de Clientes por Gênero.
+						</figcaption>
+					</figure>
+					<figure>
+						<img
+							src="assets/graph12.jpg"
+							alt="Gráfico de Porcentagem de Clientes com Segundo Pet"
+						/>
+						<figcaption>
+							Gráfico 12: Porcentagem de Clientes com Segundo Pet.
+						</figcaption>
+					</figure>
+					<figure>
+						<img
+							src="assets/graph13.jpg"
+							alt="Gráfico de Proporção do Gasto Total por Tipo de Pet"
+						/>
+						<figcaption>
+							Gráfico 13: Proporção do Gasto Total por Tipo de Pet.
+						</figcaption>
+					</figure>
+					<figure>
+						<img
+							src="assets/graph14.jpg"
+							alt="Gráfico de Relação entre Gasto, Frequência e Satisfação"
+						/>
+						<figcaption>
+							Gráfico 14: Relação entre Gasto, Frequência e Satisfação (Bubble
+							Chart).
+						</figcaption>
+					</figure>
+				</div>
 			</section>
 		</main>
 
+		<!-- Modal para Imagem Ampliada -->
+		<div id="image-modal" class="image-modal-overlay">
+			<span class="image-modal-close-button">&times;</span>
+			<img class="image-modal-content" id="modal-image" />
+		</div>
+
 		<script src="js/script.js"></script>
+		<script src="js/image-modal.js"></script>
 	</body>
 </html>
