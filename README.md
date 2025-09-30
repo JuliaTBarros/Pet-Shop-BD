@@ -78,6 +78,9 @@ Após a execução, a aplicação estará rodando e pronta para receber requisi�
 ## 👩‍💻 Autores
 
 **Júlia T. Barros**
+
 **Maria Clara Neves**
+
 **Vinícius Bernardo**
+
 **Henrique Figueireido**
