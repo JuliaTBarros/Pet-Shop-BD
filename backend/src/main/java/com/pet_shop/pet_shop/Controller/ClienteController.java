@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.pet_shop.pet_shop.DTO.ClienteRequestDTO;
 import com.pet_shop.pet_shop.DTO.ClienteResponseDTO;
 import com.pet_shop.pet_shop.Service.ClienteService;
+import com.pet_shop.pet_shop.exception.ResourceNotFoundException;
 
 @RestController
 @RequestMapping("/api/clientes")
@@ -58,8 +59,28 @@ public class ClienteController {
     }
 
     @DeleteMapping("/{cpf}")
-    public ResponseEntity<Void> deleteCliente(@PathVariable String cpf) {
-        clienteService.deleteCliente(cpf);
-        return ResponseEntity.noContent().build();
+    public ResponseEntity<?> deleteCliente(@PathVariable String cpf) {
+        try {
+            clienteService.deleteCliente(cpf);
+            return ResponseEntity.noContent().build();
+        } catch (ResourceNotFoundException e) {
+            return ResponseEntity.status(404)
+                    .body(new ErrorResponse(e.getMessage()));
+        } catch (RuntimeException e) {
+            return ResponseEntity.status(400)
+                    .body(new ErrorResponse(e.getMessage()));
+        }
+    }
+
+    private static class ErrorResponse {
+        private final String message;
+
+        public ErrorResponse(String message) {
+            this.message = message;
+        }
+
+        public String getMessage() {
+            return message;
+        }
     }
 }

@@ -77,11 +77,16 @@ public class ClienteService {
     }
 
     public void deleteCliente(String cpf) {
-        // revisar essa parte
-        if (clienteRepository.findByCpf(cpf) == null) {
+        Cliente cliente = clienteRepository.findByCpf(cpf);
+        if (cliente == null) {
             throw new ResourceNotFoundException(
                     "Não é possível deletar. Cliente com CPF '" + cpf + "' não encontrado.");
         }
-        clienteRepository.deleteByCpf(cpf);
+        try {
+            clienteRepository.deleteByCpf(cpf);
+        } catch (Exception e) {
+            throw new RuntimeException(
+                    "Não é possível excluir o cliente pois existem vendas associadas a ele. Exclua primeiro as vendas relacionadas.", e);
+        }
     }
 }

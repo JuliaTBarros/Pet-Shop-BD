@@ -100,11 +100,16 @@ document.addEventListener('DOMContentLoaded', () => {
 				body: JSON.stringify(clienteData),
 			});
 
+			const contentType = response.headers.get('content-type');
 			if (!response.ok) {
-				const errorData = await response.json();
-				throw new Error(
-					`Erro ao salvar cliente: ${errorData.message || response.statusText}`
-				);
+				let errorMessage = 'Erro ao salvar cliente';
+				if (contentType && contentType.includes('application/json')) {
+					const errorData = await response.json();
+					errorMessage = errorData.message || response.statusText;
+				} else {
+					errorMessage = await response.text() || response.statusText;
+				}
+				throw new Error(errorMessage);
 			}
 
 			alert(`Cliente ${editMode ? 'atualizado' : 'cadastrado'} com sucesso!`);
@@ -112,7 +117,7 @@ document.addEventListener('DOMContentLoaded', () => {
 			carregarClientes(); // Recarrega a lista
 		} catch (error) {
 			console.error('Falha ao salvar cliente:', error);
-			alert(`Não foi possível salvar o cliente. ${error.message}`);
+			alert(`Não foi possível salvar o cliente: ${error.message}`);
 		}
 	});
 
@@ -160,15 +165,21 @@ document.addEventListener('DOMContentLoaded', () => {
 						method: 'DELETE',
 					});
 
-					if (!response.ok) {
-						throw new Error('Erro ao excluir cliente.');
+					if (response.ok || response.status === 204) {
+						alert('Cliente excluído com sucesso!');
+						carregarClientes(); // Recarrega a lista
+					} else {
+						const errorData = await response.json().catch(() => ({ 
+							message: 'Ocorreu um erro ao tentar excluir o cliente.' 
+						}));
+						throw new Error(errorData.message || errorData.error || 'Erro ao excluir cliente.');
 					}
-
-					alert('Cliente excluído com sucesso!');
-					carregarClientes(); // Recarrega a lista
 				} catch (error) {
 					console.error('Falha ao excluir cliente:', error);
-					alert('Não foi possível excluir o cliente.');
+					const errorMessage = error.message === 'Failed to fetch' 
+						? 'Erro de conexão com o servidor. Verifique se o servidor está rodando.'
+						: error.message;
+					alert('Não foi possível excluir o cliente: ' + errorMessage);
 				}
 			}
 		}
