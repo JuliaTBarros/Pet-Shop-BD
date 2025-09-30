@@ -42,15 +42,15 @@
 						</button>
 						<button
 							class="btn btn-secondary"
-							data-query="SELECT A.nome AS nome_animal, A.especie, C.nome AS nome_dono FROM Animal A JOIN Cliente C ON A.cpf_cliente = C.cpf WHERE C.cpf = '11122233344';"
+							data-query="SELECT P.nome_pet AS nome_animal, P.especie, C.nome AS nome_dono FROM Pet AS P JOIN Cliente AS C ON P.cpfCliente = C.cpf WHERE C.cpf = '11122233344';"
 						>
 							Animais por Cliente (JOIN)
 						</button>
 						<button
 							class="btn btn-secondary"
-							data-query="SELECT tipo_servico, COUNT(*) AS quantidade FROM Agendamento GROUP BY tipo_servico;"
+							data-query="SELECT cod_funcionario, COUNT(*) AS quantidade FROM Consulta_Atende GROUP BY cod_funcionario;"
 						>
-							Contagem de Serviços
+							Contagem de Consultas por Veterinário
 						</button>
 						<button
 							class="btn btn-secondary"
